@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#176B58</color>
+    <color name="primary_light">#E3F3ED</color>
+    <color name="background">#F5F7FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#172D36</color>
+    <color name="text_secondary">#526673</color>
+    <color name="outline">#D5DFE4</color>
+    <color name="danger">#B3261E</color>
+    <color name="star">#996500</color>
+</resources>

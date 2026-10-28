@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screenRoot" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+        <Button android:id="@+id/backButton" style="@style/BackButton"/>
+        <TextView style="@style/ScreenTitle" android:text="@string/add_contact"/>
+        <TextView style="@style/Subtitle" android:text="@string/add_subtitle"/>
+        <TextView style="@style/FieldLabel" android:text="@string/full_name" android:labelFor="@id/nameInput"/>
+        <EditText android:id="@+id/nameInput" style="@style/FormInput" android:inputType="textPersonName"
+            android:singleLine="true" android:hint="@string/name_hint" android:imeOptions="actionNext"
+            android:importantForAutofill="no"/>
+        <TextView style="@style/FieldLabel" android:text="@string/phone_label" android:labelFor="@id/phoneInput"/>
+        <EditText android:id="@+id/phoneInput" style="@style/FormInput" android:inputType="phone"
+            android:singleLine="true" android:hint="@string/phone_hint" android:imeOptions="actionNext"
+            android:importantForAutofill="no"/>
+        <TextView style="@style/FieldLabel" android:text="@string/group_label" android:labelFor="@id/groupSpinner"/>
+        <Spinner android:id="@+id/groupSpinner" style="@style/FormInput"
+            android:background="@android:drawable/btn_dropdown" android:spinnerMode="dropdown"/>
+        <TextView style="@style/FieldLabel" android:text="@string/gender_label"/>
+        <RadioGroup android:id="@+id/genderGroup" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:checkedButton="@id/genderMale">
+            <RadioButton android:id="@+id/genderMale" android:layout_width="wrap_content"
+                android:layout_height="48dp" android:text="@string/male"/>
+            <RadioButton android:id="@+id/genderFemale" android:layout_width="wrap_content"
+                android:layout_height="48dp" android:layout_marginStart="20dp" android:text="@string/female"/>
+            <RadioButton android:id="@+id/genderOther" android:layout_width="wrap_content"
+                android:layout_height="48dp" android:layout_marginStart="20dp" android:text="@string/other"/>
+        </RadioGroup>
+        <CheckBox android:id="@+id/favoriteInput" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minHeight="48dp" android:textSize="16sp"
+            android:text="@string/favorite"/>
+        <TextView style="@style/FieldLabel" android:text="@string/notes_label" android:labelFor="@id/notesInput"/>
+        <EditText android:id="@+id/notesInput" style="@style/FormInput" android:inputType="textMultiLine"
+            android:minLines="2" android:gravity="top|start" android:hint="@string/notes_hint"
+            android:importantForAutofill="no"/>
+        <Button android:id="@+id/saveButton" style="@style/PrimaryButton" android:layout_marginTop="16dp"
+            android:text="@string/save_contact"/>
+    </LinearLayout>
+</ScrollView>

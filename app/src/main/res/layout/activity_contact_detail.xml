@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/screenRoot" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+        <Button android:id="@+id/backButton" style="@style/BackButton"/>
+        <TextView style="@style/ScreenTitle" android:text="@string/contact_detail" android:layout_marginBottom="20dp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="20dp" android:background="@drawable/bg_card">
+            <TextView android:id="@+id/detailAvatar" android:layout_width="64dp" android:layout_height="64dp"
+                android:layout_gravity="center_horizontal" android:background="@drawable/bg_avatar"
+                android:gravity="center" android:textColor="@color/primary" android:textStyle="bold" android:textSize="28sp"
+                android:importantForAccessibility="no"/>
+            <TextView android:id="@+id/detailName" style="@style/DetailValue" android:textStyle="bold" android:textSize="24sp"
+                android:gravity="center" android:layout_marginTop="12dp"/>
+            <TextView style="@style/DetailLabel" android:text="@string/phone_detail"/>
+            <TextView android:id="@+id/detailPhone" style="@style/DetailValue"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:baselineAligned="false">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView style="@style/DetailLabel" android:text="@string/group_detail"/>
+                    <TextView android:id="@+id/detailGroup" style="@style/DetailValue"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView style="@style/DetailLabel" android:text="@string/gender_detail"/>
+                    <TextView android:id="@+id/detailGender" style="@style/DetailValue"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView style="@style/DetailLabel" android:text="@string/notes_detail"/>
+            <TextView android:id="@+id/detailNotes" style="@style/DetailValue"/>
+            <CheckBox android:id="@+id/detailFavorite" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:minHeight="48dp" android:layout_marginTop="16dp"
+                android:text="@string/favorite" android:textSize="16sp"/>
+        </LinearLayout>
+        <Button android:id="@+id/callButton" style="@style/PrimaryButton" android:layout_marginTop="20dp" android:text="@string/call"/>
+        <Button android:id="@+id/deleteButton" style="@style/SecondaryButton"
+            android:textColor="@color/danger" android:text="@string/delete_contact"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="96dp"
+    android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp"
+    android:background="@drawable/bg_card">
+    <TextView android:id="@+id/contactAvatar" android:layout_width="48dp" android:layout_height="48dp"
+        android:background="@drawable/bg_avatar" android:gravity="center" android:textSize="22sp"
+        android:textStyle="bold" android:textColor="@color/primary" android:importantForAccessibility="no"/>
+    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content"
+        android:layout_marginStart="14dp" android:layout_marginEnd="8dp" android:orientation="vertical">
+        <TextView android:id="@+id/contactName" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="17sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+        <TextView android:id="@+id/contactPhone" style="@style/Subtitle" android:layout_marginTop="4dp"/>
+        <TextView android:id="@+id/contactGroup" style="@style/Subtitle" android:layout_marginTop="3dp"
+            android:textSize="12sp" android:textColor="@color/primary"/>
+    </LinearLayout>
+    <TextView android:id="@+id/contactStar" android:layout_width="28dp" android:layout_height="wrap_content"
+        android:text="@string/favorite_marker" android:textColor="@color/star" android:textSize="24sp"
+        android:contentDescription="@string/favorite_description"/>
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Danh bạ</string>
+    <string name="app_tagline">Kết nối từ những điều giản đơn</string>
+    <string name="login_title">Chào mừng trở lại</string>
+    <string name="login_subtitle">Đăng nhập để quản lý các liên hệ của bạn.</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="username_hint">Nhập tên đăng nhập</string>
+    <string name="password_hint">Nhập mật khẩu</string>
+    <string name="demo_account">Tài khoản thực hành: admin / 123456</string>
+    <string name="required_username">Vui lòng nhập tên đăng nhập</string>
+    <string name="required_password">Vui lòng nhập mật khẩu</string>
+    <string name="invalid_login">Sai tên đăng nhập hoặc mật khẩu</string>
+    <string name="contacts_title">Danh bạ của tôi</string>
+    <string name="contacts_subtitle">Những người bạn luôn muốn giữ liên lạc</string>
+    <string name="total_contacts">Tổng số liên hệ</string>
+    <string name="favorite_contacts">Liên hệ yêu thích</string>
+    <string name="all_contacts">TẤT CẢ LIÊN HỆ</string>
+    <string name="add_contact">Thêm liên hệ</string>
+    <string name="add_subtitle">Lưu một kết nối mới vào danh bạ</string>
+    <string name="full_name">Họ và tên *</string>
+    <string name="name_hint">Ví dụ: Nguyễn Minh Anh</string>
+    <string name="phone_label">Số điện thoại *</string>
+    <string name="phone_hint">10 chữ số, bắt đầu bằng 0</string>
+    <string name="group_label">Nhóm</string>
+    <string name="gender_label">Giới tính</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="other">Khác</string>
+    <string name="favorite">Liên hệ yêu thích</string>
+    <string name="notes_label">Ghi chú</string>
+    <string name="notes_hint">Thêm ghi chú (không bắt buộc)</string>
+    <string name="save_contact">Lưu liên hệ</string>
+    <string name="required_name">Vui lòng nhập họ và tên</string>
+    <string name="invalid_phone">Số điện thoại phải gồm 10 chữ số và bắt đầu bằng 0</string>
+    <string name="duplicate_phone">Số điện thoại đã tồn tại trong danh bạ</string>
+    <string name="contact_saved">Đã thêm liên hệ</string>
+    <string name="contact_deleted">Đã xóa liên hệ</string>
+    <string name="contact_missing">Liên hệ không còn tồn tại</string>
+    <string name="contact_detail">Chi tiết liên hệ</string>
+    <string name="phone_detail">SỐ ĐIỆN THOẠI</string>
+    <string name="group_detail">NHÓM</string>
+    <string name="gender_detail">GIỚI TÍNH</string>
+    <string name="notes_detail">GHI CHÚ</string>
+    <string name="no_notes">Chưa có ghi chú</string>
+    <string name="call">Gọi điện</string>
+    <string name="back">Quay lại</string>
+    <string name="delete_contact">Xóa liên hệ</string>
+    <string name="confirm_delete">Xóa %1$s khỏi danh bạ?</string>
+    <string name="cancel">Hủy</string>
+    <string name="delete">Xóa</string>
+    <string name="no_dialer">Thiết bị chưa có ứng dụng quay số</string>
+    <string name="empty_contacts">Chưa có liên hệ nào</string>
+    <string name="empty_hint">Nhấn Thêm liên hệ để bắt đầu.</string>
+    <string name="favorite_marker">★</string>
+    <string name="favorite_description">Liên hệ yêu thích</string>
+    <string name="in_memory_notice">Dữ liệu lưu trong bộ nhớ khi ứng dụng chạy</string>
+    <string-array name="contact_groups">
+        <item>Gia đình</item><item>Bạn bè</item><item>Công việc</item><item>Khác</item>
+    </string-array>
+</resources>
