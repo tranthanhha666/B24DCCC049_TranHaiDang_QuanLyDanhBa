@@ -51,11 +51,10 @@ APK debug sau build: `app/build/outputs/apk/debug/app-debug.apk`.
 
 ## Báo cáo và minh chứng
 
-- [Báo cáo PDF](B24DCCC049_TranHaiDang_BaoCao.pdf) gồm **9 trang, 12 hình minh chứng**, có ảnh và mô tả cho cả bốn màn hình; đã kiểm tra bố cục từng trang.
+- Báo cáo PDF gồm **9 trang, 12 hình minh chứng**, có ảnh và mô tả cho cả bốn màn hình. File PDF được tạo tại máy để nộp riêng và được loại khỏi Git bằng `.gitignore`.
 - [Ảnh chạy thật](docs/screenshots/) gồm đăng nhập, lỗi, biểu mẫu, danh sách sau cập nhật, chi tiết và trình quay số.
 - [Bảng đối chiếu đề bài](docs/REQUIREMENTS.md).
-- Dòng **Lớp** trong báo cáo chờ bổ sung thông tin người nộp.
-- [Nguồn báo cáo](docs/report.html) có thể sửa nội dung, gồm dòng Lớp. Chạy `powershell -File tools/build-pdf.ps1` ở thư mục gốc để xuất lại PDF bằng Chrome/Edge; `powershell -File tools/render-pdf.ps1 -ProjectRoot (Get-Location).Path` kết xuất các trang ra PNG bằng Windows PDF để kiểm tra.
+- [Nguồn báo cáo](docs/report.html) có thể chỉnh sửa nội dung trước khi xuất PDF. Chạy `powershell -File tools/build-pdf.ps1` ở thư mục gốc để xuất lại PDF bằng Chrome/Edge; `powershell -File tools/render-pdf.ps1 -ProjectRoot (Get-Location).Path` kết xuất các trang ra PNG bằng Windows PDF để kiểm tra.
 - Để chụp lại ảnh: chạy instrumentation test, rồi dùng `adb pull /sdcard/Download/quanlydanhba-evidence/. docs/screenshots`.
 
 `.gitignore` loại `build`, `.gradle`, `.idea`, `local.properties` và ảnh kiểm tra bố cục báo cáo.
