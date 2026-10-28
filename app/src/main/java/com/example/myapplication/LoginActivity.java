@@ -19,6 +19,8 @@ public final class LoginActivity extends BaseActivity {
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
         loginError = findViewById(R.id.loginError);
+        clearErrorWhenEdited(usernameInput);
+        clearErrorWhenEdited(passwordInput);
         findViewById(R.id.loginButton).setOnClickListener(view -> attemptLogin());
         passwordInput.setOnEditorActionListener((view, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {

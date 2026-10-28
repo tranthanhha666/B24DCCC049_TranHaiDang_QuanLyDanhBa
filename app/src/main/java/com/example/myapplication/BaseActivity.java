@@ -12,6 +12,10 @@ public abstract class BaseActivity extends Activity {
     protected void showScreen(int layout) {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(layout);
+        // Android 7 chưa hỗ trợ biểu tượng điều hướng tối trên nền sáng.
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) {
+            getWindow().setNavigationBarColor(getColor(R.color.text_primary));
+        }
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
                 .setAppearanceLightStatusBars(true);
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
@@ -29,6 +33,14 @@ public abstract class BaseActivity extends Activity {
             return windowInsets;
         });
         ViewCompat.requestApplyInsets(root);
+    }
+
+    protected void clearErrorWhenEdited(android.widget.EditText input) {
+        input.addTextChangedListener(new android.text.TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence text, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence text, int start, int before, int count) {}
+            @Override public void afterTextChanged(android.text.Editable text) { input.setError(null); }
+        });
     }
 
     protected ContactRepository repository() {

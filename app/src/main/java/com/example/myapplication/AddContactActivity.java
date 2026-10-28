@@ -21,6 +21,8 @@ public final class AddContactActivity extends BaseActivity {
         nameInput = findViewById(R.id.nameInput);
         phoneInput = findViewById(R.id.phoneInput);
         notesInput = findViewById(R.id.notesInput);
+        clearErrorWhenEdited(nameInput);
+        clearErrorWhenEdited(phoneInput);
         groupSpinner = findViewById(R.id.groupSpinner);
         genderGroup = findViewById(R.id.genderGroup);
         favoriteInput = findViewById(R.id.favoriteInput);

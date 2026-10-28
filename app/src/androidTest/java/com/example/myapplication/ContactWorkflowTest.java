@@ -89,7 +89,8 @@ public class ContactWorkflowTest {
         onView(withId(R.id.genderFemale)).perform(scrollTo(), click());
         onView(withId(R.id.favoriteInput)).perform(scrollTo(), click());
         onView(withId(R.id.notesInput)).perform(scrollTo(), replaceText("Bạn cùng lớp"), closeSoftKeyboard());
-        onView(withId(R.id.nameInput)).perform(scrollTo());
+        onView(withId(R.id.backButton)).perform(scrollTo());
+        onView(withId(R.id.phoneInput)).check(matches(hasErrorText(nullValue(String.class))));
         screenshot("07_add_filled_top");
         onView(withId(R.id.saveButton)).perform(scrollTo());
         screenshot("08_add_filled_bottom");
@@ -104,6 +105,7 @@ public class ContactWorkflowTest {
         onView(withId(R.id.detailGender)).check(matches(withText("Nữ")));
         onView(withId(R.id.detailNotes)).check(matches(withText("Bạn cùng lớp")));
         onView(withId(R.id.detailFavorite)).check(matches(isChecked()));
+        onView(withId(R.id.backButton)).perform(scrollTo());
         screenshot("10_detail");
         onView(withId(R.id.detailFavorite)).perform(scrollTo(), click());
         onView(withId(R.id.backButton)).perform(scrollTo(), click());
@@ -111,24 +113,6 @@ public class ContactWorkflowTest {
         screenshot("11_after_favorite");
         onData(anything()).inAdapterView(withId(R.id.contactList)).atPosition(3).perform(click());
 
-        // Ghi nhận và kiểm tra Intent thật, đồng thời chụp màn hình ứng dụng quay số.
-        Intents.init();
-        try {
-            onView(withId(R.id.callButton)).perform(scrollTo(), click());
-            intended(allOf(hasAction(Intent.ACTION_DIAL), hasData("tel:0923456789")));
-            Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
-            instrumentation.getUiAutomation().waitForIdle(800, 5000);
-            screenshot("12_dialer");
-            // Dialer của từng hãng có back stack riêng; đưa lại task ứng dụng lên trước.
-            Intent returnIntent = new Intent(instrumentation.getTargetContext(), ContactDetailActivity.class);
-            returnIntent.putExtra(ContactDetailActivity.EXTRA_CONTACT_ID,
-                    currentRepository().getContacts().get(3).getId());
-            returnIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            instrumentation.getTargetContext().startActivity(returnIntent);
-            instrumentation.waitForIdleSync();
-        } finally {
-            Intents.release();
-        }
         onView(withId(R.id.deleteButton)).perform(scrollTo(), click());
         screenshot("13_delete_confirmation");
         onView(withText(R.string.cancel)).perform(click());
@@ -138,6 +122,18 @@ public class ContactWorkflowTest {
         onView(withId(R.id.totalCount)).check(matches(withText("3")));
         onView(withId(R.id.favoriteCount)).check(matches(withText("1")));
         screenshot("14_after_delete");
+
+        // Mở ứng dụng ngoài ở cuối luồng để không phụ thuộc back stack của Dialer.
+        onData(anything()).inAdapterView(withId(R.id.contactList)).atPosition(0).perform(click());
+        Intents.init();
+        try {
+            onView(withId(R.id.callButton)).perform(scrollTo(), click());
+            intended(allOf(hasAction(Intent.ACTION_DIAL), hasData("tel:0901234567")));
+            InstrumentationRegistry.getInstrumentation().getUiAutomation().waitForIdle(800, 5000);
+            screenshot("12_dialer");
+        } finally {
+            Intents.release();
+        }
     }
 
     @Test public void formRetainsInputAcrossActivityRecreation() {
@@ -180,11 +176,6 @@ public class ContactWorkflowTest {
         }
     }
 
-    private ContactRepository currentRepository() {
-        return ((ContactsApplication) InstrumentationRegistry.getInstrumentation()
-                .getTargetContext().getApplicationContext()).getRepository();
-    }
-
     private void screenshot(String name) throws Exception {
         Instrumentation instrumentation = InstrumentationRegistry.getInstrumentation();
         instrumentation.waitForIdleSync();
@@ -201,11 +192,12 @@ public class ContactWorkflowTest {
         }
         // Giữ bằng chứng sau khi Gradle gỡ APK kiểm thử; thao tác shell chỉ nằm trong test.
         String archive = "/sdcard/Download/quanlydanhba-evidence";
-        String command = "mkdir -p " + archive + " && cp "
-                + new File(directory, name + ".png").getAbsolutePath() + " " + archive + "/";
-        try (ParcelFileDescriptor descriptor = instrumentation.getUiAutomation().executeShellCommand(command);
-             java.io.InputStream input = new ParcelFileDescriptor.AutoCloseInputStream(descriptor)) {
-            while (input.read() != -1) { /* Đợi lệnh sao chép kết thúc. */ }
+        String source = new File(directory, name + ".png").getAbsolutePath();
+        for (String command : new String[]{"mkdir -p " + archive, "cp " + source + " " + archive + "/"}) {
+            try (ParcelFileDescriptor descriptor = instrumentation.getUiAutomation().executeShellCommand(command);
+                 java.io.InputStream input = new ParcelFileDescriptor.AutoCloseInputStream(descriptor)) {
+                while (input.read() != -1) { /* Đợi lệnh hoàn thành. */ }
+            }
         }
     }
 }
